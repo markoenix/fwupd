@@ -236,6 +236,20 @@ library_deps = [
   platform_deps,
 ]
 
+if get_option('rust').disable_auto_if(not rustc.found()).allowed()
+  fwupdpluginrs = static_library(
+    'fwupdpluginrs',
+    sources: [
+      'fu-crc.rs',
+    ],
+    rust_crate_type: 'staticlib',
+  )
+  rust = import('unstable-rust')
+  rust.test('fwupdpluginrs', fwupdpluginrs)
+else
+  fwupdpluginrs = []
+endif
+
 fwupdplugin_mapfile = 'fwupdplugin.map'
 vflag = '-Wl,--version-script,@0@/@1@'.format(meson.current_source_dir(), fwupdplugin_mapfile)
 fwupdplugin = library(
@@ -254,6 +268,7 @@ fwupdplugin = library(
   ],
   link_with: [
     fwupd,
+    fwupdpluginrs,
   ],
   link_args: cc.get_supported_link_arguments([vflag]),
   link_depends: fwupdplugin_mapfile,
