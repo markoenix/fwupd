@@ -57,6 +57,7 @@ plugins = [
   'intel-usb4',
   'iommu',
   'jabra',
+  'kinetic-dp',
   'lenovo-thinklmi',
   'linux-lockdown',
   'linux-sleep',
