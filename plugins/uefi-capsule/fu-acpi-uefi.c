@@ -8,7 +8,6 @@
 
 #include "fu-acpi-uefi.h"
 
-#define FU_EFI_INSYDE_GUID	 "9d4bf935-a674-4710-ba02-bf0aa1758c7b"
 #define INSYDE_QUIRK_COD_WORKING 0x1
 
 struct _FuAcpiUefi {
@@ -167,9 +166,17 @@ fu_acpi_uefi_new(void)
 	return FU_FIRMWARE(g_object_new(FU_TYPE_ACPI_UEFI, NULL));
 }
 
+const gchar *
+fu_acpi_uefi_get_guid(FuAcpiUefi *self)
+{
+	g_return_val_if_fail(FU_IS_ACPI_UEFI(self), NULL);
+	return self->guid;
+}
+
 gboolean
 fu_acpi_uefi_cod_functional(FuAcpiUefi *self, GError **error)
 {
+	g_return_val_if_fail(FU_IS_ACPI_UEFI(self), FALSE);
 	if (!self->is_insyde || self->insyde_cod_status > 0)
 		return TRUE;
 	g_set_error_literal(error,

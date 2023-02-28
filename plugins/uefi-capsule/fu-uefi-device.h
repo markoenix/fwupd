@@ -90,6 +90,12 @@ typedef enum {
  * Enable debugging the EFI binary.
  */
 #define FU_UEFI_DEVICE_FLAG_ENABLE_EFI_DEBUGGING (1 << 8)
+/**
+ * FU_UEFI_DEVICE_FLAG_IS_INSYDE:
+ *
+ * The updater is written by Insyde and may require different behavior.
+ */
+#define FU_UEFI_DEVICE_FLAG_IS_INSYDE (1 << 9)
 
 FuUefiDeviceKind
 fu_uefi_device_kind_from_string(const gchar *kind);
