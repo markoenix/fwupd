@@ -9,4 +9,4 @@
 #include <fwupdplugin.h>
 
 #define FU_TYPE_JABRA_GNP_DEVICE (fu_jabra_gnp_device_get_type())
-G_DECLARE_FINAL_TYPE(FuJabraGnpDevice, fu_jabra_gnp_device, FU, JABRA_GNP_DEVICE, FuHidDevice)
+G_DECLARE_FINAL_TYPE(FuJabraGnpDevice, fu_jabra_gnp_device, FU, JABRA_GNP_DEVICE, FuUsbDevice)

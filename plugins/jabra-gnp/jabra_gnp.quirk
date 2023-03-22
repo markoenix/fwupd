@@ -1,4 +1,3 @@
 # Jabra Evolve2 75 [runtime]
 [USB\VID_0B0E&PID_24DB]
 Plugin = jabra_gnp
-CounterpartGuid = USB\VID_0B0E&PID_24DB
